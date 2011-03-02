@@ -13,8 +13,8 @@ Introducing the Neighbour-Net Proxy Protocol
   - private/direct messaging a la email
 
 * To allow people to keep their content in their own house instead of
-  at the mercy of third parties "in the cloud".  See "Eben Moglen's
-  Freedom Cloud talk":http://www.softwarefreedom.org/events/2010/isoc-ny/FreedomInTheCloud-transcript.html
+  at the mercy of third parties "in the cloud".  See [http://www.softwarefreedom.org/events/2010/isoc-ny/FreedomInTheCloud-transcript.html](Eben Moglen's
+  Freedom Cloud talk)
 
 * By means of caching, be reasonably performant for people who want to
   read that content, without requiring everyone to have "5 9s" uptimes
@@ -32,7 +32,7 @@ desirable goals is intended by their omission, but they are different
 problems from the problems which this proposal sets out to solve.
 
 - We are not in the business of providing an API for "Facebook
-App"-style third party we-page-in-a-frame applications.
+App"-style third party web-page-in-a-frame applications.
 
 - We are not catering for use cases where anonymity is important.
 Your identity in this system may or may not correspond to your local
@@ -51,6 +51,12 @@ of law is mostly upheld.
 - the DHT also to be interrogable via the DNS protocol
 
 # Node
+
+A node corresponds more or less with a user.  It may run on hardware
+they have at home (the Freedom Box vision) or on shared server/virtual
+server space somewhere.  Or even on a smartphone (this may not be a
+good idea if you're going to lose the phone).  Basically, anywhere
+with an Internet connection.
 
 Each NNPP node is an HTTP origin server and a proxy which will cache
 resources from neighbours.  "Neighbours" are typically resources
@@ -92,14 +98,14 @@ spamming "normal" friends with "geek" interests, or vice versa
 
 Remotely created content which is cached here may also be described in
 a similar way: we keep a Collection in which each entry is one of our
-friends service documents, and clients may expect that an HTTP proxy
+friends' service documents, and clients may expect that an HTTP proxy
 request to this node for any document contained in those feeds will be
 answered.
 
 # Security
 
-http://www.atomenabled.org/developers/syndication/atom-format-spec.php#rfc.section.5
-http://bitworking.org/projects/atom/rfc5023.html#rfc.section.15.5
+* [http://www.atomenabled.org/developers/syndication/atom-format-spec.php#rfc.section.5]
+* [http://bitworking.org/projects/atom/rfc5023.html#rfc.section.15.5]
 
 We use xml-enc,xml-dsig to PGP-(encrypt,sign) each entry when it is
 destined for a limited-access audience.  The corresponding private key
@@ -149,8 +155,8 @@ We identify nodes by their PGP key.  We make the key fingerprint the
 basic unit of addressing, and the PGP key name becomes the friendly
 node name.  Then we can give all nodes addresses of the form
 
-1297D4B5.node.nnrp.net (shorthand for convenience)
-13D702AD866527E08F715326776FD7C0.1297D4B5.node.nnrp.net (unambiguous)
+* `1297D4B5.node.nnrp.net` (shorthand for convenience)
+* `13D702AD866527E08F715326776FD7C0.1297D4B5.node.nnrp.net` (unambiguous)
 
 and implement a DHT mapping node addresses to IP addresses, which
 nodes will use internally in preference to ordinary DNS.  A node may
